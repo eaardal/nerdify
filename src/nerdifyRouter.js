@@ -9,10 +9,9 @@ const router = express.Router();
 const getAndRenderMarkdownHtml = (url, res) =>
   request(url, (error, response, body) => {
     if (error || response.statusCode !== 200) {
-      console.log(`${response.statusCode} getting markdown`, error);
-      res.status(response.statusCode).send(error);
+      res.status(500).send(error);
     }
-
+    console.log(error, response);
     const markdownHtml = markdownParser.replacePlaceholders(body);
 
     res

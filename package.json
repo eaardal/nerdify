@@ -9,7 +9,7 @@
     "copy-highlightjs": "copyfiles -f node_modules/highlightjs/styles/*.css ./public/highlightjs/",
     "copy-all": "npm run copy-ghmarkdown && npm run copy-highlightjs",
     "start": "npm run copy-all && nodemon src/server.js",
-    "build-css": "node-sass --include-path sass sass/nerdschool.scss public/nerdschool.css",
+    "build-css": "node-sass --include-path sass sass/nerdify.scss public/nerdify.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "author": "",
