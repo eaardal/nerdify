@@ -7,7 +7,7 @@ const replacePlaceholders = (markdown) => {
 
   renderer.link = (href, title, text) => {
     if (!placeholderMap[href]) {
-      return text;
+      return `<a href="${href}" title="${title}">${text}</a>`;
     }
 
     const match = placeholderMap[href];
