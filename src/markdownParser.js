@@ -1,4 +1,5 @@
 const marked = require('marked');
+const highlight = require('highlightjs');
 const nerdschoolPlaceholders = require('./nerdschoolPlaceholders');
 
 const replaceNerdschoolPlaceholders = (markdown) => {
@@ -15,6 +16,12 @@ const replaceNerdschoolPlaceholders = (markdown) => {
       : `<${match.element} class="${match.cssClass}">`;
   };
 
+  marked.setOptions({
+    highlight: code => {
+      console.log('highlighting');
+      return highlight.highlightAuto(code).value;
+    }
+  })
   return marked(markdown, { renderer });
 };
 

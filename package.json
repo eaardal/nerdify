@@ -1,11 +1,12 @@
 {
-  "name": "nerdschool-viewer",
+  "name": "nerdify",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf public",
     "copy": "copyfiles -f node_modules/github-markdown-css/github-markdown.css ./public/",
+    "copyh": "copyfiles -f node_modules/highlightjs/styles/*.css ./public/highlightjs/",
     "start": "npm run copy && nodemon src/server.js",
     "build-css": "node-sass --include-path sass sass/nerdschool.scss public/nerdschool.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
@@ -17,6 +18,7 @@
     "copyfiles": "^1.2.0",
     "express": "^4.14.1",
     "github-markdown-css": "^2.4.1",
+    "highlightjs": "^9.8.0",
     "marked": "^0.3.6",
     "morgan": "^1.8.1",
     "node-sass": "^4.5.0",
