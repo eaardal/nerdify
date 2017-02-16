@@ -1,30 +1,28 @@
 const marked = require('marked');
 const highlight = require('highlightjs');
-const nerdschoolPlaceholders = require('./nerdschoolPlaceholders');
+const placeholderMap = require('./placeholderMap');
 
-const replaceNerdschoolPlaceholders = (markdown) => {
+const replacePlaceholders = (markdown) => {
   const renderer = new marked.Renderer();
 
   renderer.link = (href, title, text) => {
-    if (!nerdschoolPlaceholders[href]) {
+    if (!placeholderMap[href]) {
       return text;
     }
 
-    const match = nerdschoolPlaceholders[href];
+    const match = placeholderMap[href];
     return match.closing
       ? `</${match.element}>`
       : `<${match.element} class="${match.cssClass}">`;
   };
 
   marked.setOptions({
-    highlight: code => {
-      console.log('highlighting');
-      return highlight.highlightAuto(code).value;
-    }
-  })
+    highlight: code => highlight.highlightAuto(code).value,
+  });
+
   return marked(markdown, { renderer });
 };
 
 module.exports = {
-  replaceNerdschoolPlaceholders,
+  replacePlaceholders,
 };

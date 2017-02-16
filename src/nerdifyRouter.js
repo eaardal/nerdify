@@ -13,7 +13,7 @@ const getAndRenderMarkdownHtml = (url, res) =>
       res.status(response.statusCode).send(error);
     }
 
-    const markdownHtml = markdownParser.replaceNerdschoolPlaceholders(body);
+    const markdownHtml = markdownParser.replacePlaceholders(body);
 
     res
       .header('Cache-Control', 'no-cache, no-store')
