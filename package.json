@@ -1,0 +1,24 @@
+{
+  "name": "nerdschool-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf public",
+    "copy": "copyfiles -f node_modules/github-markdown-css/github-markdown.css ./public/",
+    "start": "npm run copy && nodemon src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "copyfiles": "^1.2.0",
+    "express": "^4.14.1",
+    "github-markdown-css": "^2.4.1",
+    "marked": "^0.3.6",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0",
+    "pug": "^2.0.0-beta11",
+    "request": "^2.79.0"
+  }
+}
