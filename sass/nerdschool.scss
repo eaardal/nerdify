@@ -1,3 +1,10 @@
-.body {
-
+.nerdschool-test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  border: gray dashed 1px;
+  background-color: #CAE2EB;
+  width: 500px;
+  height: 200px;
 }

@@ -1,8 +1,9 @@
 const express = require('express');
 const request = require('request');
-const marked = require('marked');
 const pug = require('pug');
 const urlParser = require('./urlParser');
+const markdownParser = require('./markdownParser');
+
 const router = express.Router();
 
 const getAndRenderMarkdownHtml = (url, res) =>
@@ -11,7 +12,12 @@ const getAndRenderMarkdownHtml = (url, res) =>
       console.log(`${response.statusCode} getting markdown`, error);
       res.status(response.statusCode).send(error);
     }
-    res.render('markdown', { markdownHtml: marked(body) });
+
+    const markdownHtml = markdownParser.replaceNerdschoolPlaceholders(body);
+
+    res
+      .header('Cache-Control', 'no-cache, no-store')
+      .render('markdown', { markdownHtml });
   });
 
 router.get('/', (req, res) => {
